@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2       # Checkout the code
-      - run: npm ci            #install dependencies
+      - run: npm i            #install dependencies
       - run: npm run build
         env:
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}
