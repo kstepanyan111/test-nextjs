@@ -1,21 +1,15 @@
 FROM node:lts-alpine
 
-ENV NODE_ENV production
-ENV NPM_CONFIG_LOGLEVEL warn
-
-RUN mkdir /home/node/app/ && chown -R node:node /home/node/app
+RUN mkdir /home/node/app/ 
 
 WORKDIR /home/node/app
 
 COPY package.json package.json
 
-USER node
+RUN npm install 
 
-RUN yarn install --production
-
-COPY --chown=node:node .next .next
-COPY --chown=node:node public public
+COPY . .
 
 EXPOSE 3000
 
-CMD yarn dev  
+CMD npm run dev  
